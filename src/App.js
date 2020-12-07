@@ -43,26 +43,57 @@ function App() {
 
   };
 
+  function jugarEntreJugadores(){
+    var resultadoTexto = ["Empate", "¡Ganó el Jugador 1!", "¡Ganó el jugador 2!"];
+    var elecciones = ["Piedra", "Papel", "Tijeras", "Lagarto", "Spock"];
+
+    //Esta parte calculará toda la logistica del piedra, papel, tijeras, larto y spock.
+    // 0 => Empate
+    // 1 => ¡Ganaste!
+    // 2 => Pierdes (╯°□°）╯︵ ┻━┻
+    var resultado = [
+              [0,1,2,2,1],
+              [2,0,1,1,2],
+              [1,2,0,2,1],
+              [2,1,2,1,0],
+              [2,1,2,1,0]
+    ];
+
+    
+    console.log("P1: " + elecciones[p1]);
+    console.log("P2: " + elecciones[p2]);
+    var jugada = resultado[p2][p1];
+
+    console.log(jugada)
+    console.log(resultadoTexto[jugada])
+    return (
+      <div>hola mundo</div>
+    )
+
+  };
 
 
 
 
   return (
     <div className="App">
+      <div>Jugador 1</div>
       <button onClick={() => p1 = 0}>Piedra</button>
       <button onClick={() => p1 = 1}>Papel</button>
       <button onClick={() => p1 = 2}>Tijeras</button>
       <button onClick={() => p1 = 3}>Lagarto</button>
       <button onClick={() => p1 = 4}>Spock</button>
         <div>
-          <p> <button onClick={() => jugar()}> Jugar contra CPU</button> </p>
+          <p> <button onClick={() => jugar()}> Jugador 1 VS CPU</button> </p>
+          <p> <button onClick={() => jugarEntreJugadores()}> Jugador 1 VS Jugador 2</button> </p>
         </div>
           <div>
-            <button>Piedra</button>
-            <button>Papel</button>
-            <button>Tijeras</button>
-            <button>Lagarto</button>
-            <button>Spock</button>
+          <div>Jugador 2</div>
+            <button onClick={() => p2 = 0}>Piedra</button>
+            <button onClick={() => p2 = 1}>Papel</button>
+            <button onClick={() => p2 = 2}>Tijeras</button>
+            <button onClick={() => p2 = 3}>Lagarto</button>
+            <button onClick={() => p2 = 4}>Spock</button>
           </div>
     </div>
       
