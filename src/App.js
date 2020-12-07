@@ -31,11 +31,15 @@ function App() {
               [2,1,2,1,0]
     ];
 
-    console.log("CPU: " + cpu);
-    console.log("P1: " + p1);
+    console.log("CPU: " + elecciones[cpu]);
+    console.log("P1: " + elecciones[p1]);
     var jugada = resultado[cpu][p1];
 
     console.log(jugada)
+    console.log(resultadoTexto[jugada])
+    return (
+      <div>hola mundo</div>
+    )
 
   };
 
