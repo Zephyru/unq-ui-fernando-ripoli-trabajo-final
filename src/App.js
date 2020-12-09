@@ -90,6 +90,7 @@ function App() {
 
   return (
     <div className="App">
+      <div>Para ver resultados hacer: click derecho, "inspeccionar elemento" y "consola"</div>
       <div><h2>Jugador 1</h2></div>
       <button onClick={() => p1 = 0}>Piedra</button>
       <button onClick={() => p1 = 1}>Papel</button>
