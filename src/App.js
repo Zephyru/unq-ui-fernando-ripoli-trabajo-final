@@ -1,7 +1,4 @@
-import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
-
 
 function App() {
 
@@ -12,15 +9,9 @@ function App() {
   var winsP2 = 0;
   var winsCPU = 0;
 
-  function setJugada(jugador, jugada){
-    if(jugador === 0){p1=jugada}
-    else{p2=jugada};
-    console.log(p1);
-    console.log(p2);
-  }
 
   function jugar(){
-    var resultadoTexto = ["Empate", "¡Ganaste!", "Pierdes (╯°□°）╯︵ ┻━┻"];
+    var resultadoTexto = ["Empate", "¡Ganaste! ╰(*°▽°*)╯", "Pierdes (╯°□°）╯︵ ┻━┻"];
     var elecciones = ["Piedra", "Papel", "Tijeras", "Lagarto", "Spock"];
     var cpu = 0 + Math.floor((5 - 0) * Math.random());
 
@@ -28,12 +19,14 @@ function App() {
     // 0 => Empate
     // 1 => ¡Ganaste!
     // 2 => Pierdes (╯°□°）╯︵ ┻━┻
-    var resultado = [
-              [0,1,2,2,1],
-              [2,0,1,1,2],
-              [1,2,0,2,1],
-              [2,1,2,1,0],
-              [2,1,2,1,0]
+    // La primera fila y columna sería piedra, dando asi un 0 entre ellos en la primer "celda". Sigue la lista de filas y columnas segun estan
+    // en la variable "elecciones", dando asi los diferentes resultados de enfrentarlos entre si.
+    var resultado = [      //Pi,Pa,Ti,La,Sp
+          /*Piedra*/          [0,1,2,2,1],
+          /*Papel*/           [2,0,1,1,2],
+          /*Tijeras*/         [1,2,0,2,1],
+          /*Lagarto*/         [1,2,1,0,2],
+          /*Spock*/           [2,1,2,1,0]
     ];
 
     var jugada = resultado[cpu][p1];
@@ -44,16 +37,10 @@ function App() {
     if(resultado[cpu][p1] === 2){
       winsCPU++
     }
-
+    console.log("[ Jugador VS CPU ]")
+    console.log("Jugador 1: " + elecciones[p1]);
     console.log("CPU: " + elecciones[cpu]);
-    console.log("P1: " + elecciones[p1]);
-    console.log(jugada)
     console.log(resultadoTexto[jugada])
-    
-    return (
-      <div>hola mundo</div>
-    )
-
   };
 
   function jugarEntreJugadores(){
@@ -65,11 +52,11 @@ function App() {
     // 1 => ¡Ganaste!
     // 2 => Pierdes (╯°□°）╯︵ ┻━┻
     var resultado = [
-              [0,1,2,2,1],
-              [2,0,1,1,2],
-              [1,2,0,2,1],
-              [2,1,2,1,0],
-              [2,1,2,1,0]
+                [0,1,2,2,1],
+                [2,0,1,1,2],
+                [1,2,0,2,1],
+                [1,2,1,0,2],
+                [2,1,2,1,0]
     ];
 
     var jugada = resultado[p2][p1];
@@ -81,9 +68,9 @@ function App() {
       winsP2++
     }
 
-    console.log("P1: " + elecciones[p1]);
-    console.log("P2: " + elecciones[p2]);
-    console.log(jugada)
+    console.log("[ Jugador 1 VS Jugador 2 ]")
+    console.log("Jugador 1: " + elecciones[p1]);
+    console.log("Jugador 2: " + elecciones[p2]);
     console.log(resultadoTexto[jugada])
 
     
@@ -94,16 +81,16 @@ function App() {
   };
 
   function mostrarPuntaje(){
-    console.log("Puntajes")
-    console.log("P1: " + winsP1 + " victorias");
-    console.log("P2: " + winsP2 + " victorias");
+    console.log("[ Puntajes ]")
+    console.log("Jugador 1: " + winsP1 + " victorias");
+    console.log("Jugador 2: " + winsP2 + " victorias");
     console.log("CPU: " + winsCPU + " victorias");
   }
 
 
   return (
     <div className="App">
-      <div>Jugador 1</div>
+      <div><h2>Jugador 1</h2></div>
       <button onClick={() => p1 = 0}>Piedra</button>
       <button onClick={() => p1 = 1}>Papel</button>
       <button onClick={() => p1 = 2}>Tijeras</button>
@@ -111,10 +98,11 @@ function App() {
       <button onClick={() => p1 = 4}>Spock</button>
         <div>
           <p> <button onClick={() => jugar()}> Jugador 1 VS CPU</button> </p>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ61qvBV2mQx7OFcRcj_NmERN0hMLgGrNOLnQ&usqp=CAU" alt="Trulli" width="100" height="100"></img>
           <p> <button onClick={() => jugarEntreJugadores()}> Jugador 1 VS Jugador 2</button> </p>
         </div>
           <div>
-          <div>Jugador 2</div>
+          <div><h2>Jugador 2</h2></div>
             <button onClick={() => p2 = 0}>Piedra</button>
             <button onClick={() => p2 = 1}>Papel</button>
             <button onClick={() => p2 = 2}>Tijeras</button>
